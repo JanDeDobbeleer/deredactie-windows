@@ -1,0 +1,5 @@
+<Application x:Class="deredactie.windows.phone.App" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:local="using:deredactie.windows.phone">
+  <Application.Resources>
+    <vm:ViewModelLocator x:Key="Locator" xmlns:vm="using:deredactie.windows.phone.ViewModel" />
+  </Application.Resources>
+</Application>
