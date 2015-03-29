@@ -1,19 +1,7 @@
-/*
-  In App.xaml:
-  <Application.Resources>
-      <vm:ViewModelLocator xmlns:vm="clr-namespace:deredactie.windows.phone"
-                           x:Key="Locator" />
-  </Application.Resources>
-  
-  In the View:
-  DataContext="{Binding Source={StaticResource Locator}, Path=ViewModelName}"
-
-  You can also use Blend to do all this with the tool's support.
-  See http://www.galasoft.ch/mvvm
-*/
-
-using GalaSoft.MvvmLight;
+using deredactie.windows.api.Service;
 using GalaSoft.MvvmLight.Ioc;
+using GalaSoft.MvvmLight.Messaging;
+using GalaSoft.MvvmLight.Views;
 using Microsoft.Practices.ServiceLocation;
 
 namespace deredactie.windows.phone.ViewModel
@@ -31,17 +19,9 @@ namespace deredactie.windows.phone.ViewModel
         {
             ServiceLocator.SetLocatorProvider(() => SimpleIoc.Default);
 
-            ////if (ViewModelBase.IsInDesignModeStatic)
-            ////{
-            ////    // Create design time view services and models
-            ////    SimpleIoc.Default.Register<IDataService, DesignDataService>();
-            ////}
-            ////else
-            ////{
-            ////    // Create run time view services and models
-            ////    SimpleIoc.Default.Register<IDataService, DataService>();
-            ////}
-
+            SimpleIoc.Default.Register<INavigationService, NavigationService>();
+            SimpleIoc.Default.Register<IMessenger, Messenger>();
+            SimpleIoc.Default.Register<NewsService>();
             SimpleIoc.Default.Register<MainViewModel>();
         }
 
