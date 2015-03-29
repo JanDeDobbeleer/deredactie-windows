@@ -5,8 +5,21 @@
     xmlns:local="using:deredactie.windows.phone"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:interactivity="using:Microsoft.Xaml.Interactivity"
+    xmlns:core="using:Microsoft.Xaml.Interactions.Core"
+    xmlns:behaviors="using:deredactie.windows.phone.Behaviors"
     mc:Ignorable="d"
+    NavigationCacheMode="Required"
+    DataContext="{Binding Main, Source={StaticResource Locator}}"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <interactivity:Interaction.Behaviors>
+        <behaviors:ProgressBehavior IsVisible="{Binding IsBusy}" Text="loading..." />
+
+        <core:EventTriggerBehavior EventName="Loaded">
+            <core:InvokeCommandAction Command="{Binding ViewLoadedCommand}" />
+        </core:EventTriggerBehavior>
+    </interactivity:Interaction.Behaviors>
 
     <Grid>
 
