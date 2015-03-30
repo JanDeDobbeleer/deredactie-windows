@@ -1,15 +1,15 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Package xmlns="http://schemas.microsoft.com/appx/2010/manifest" xmlns:m2="http://schemas.microsoft.com/appx/2013/manifest" xmlns:m3="http://schemas.microsoft.com/appx/2014/manifest" xmlns:mp="http://schemas.microsoft.com/appx/2014/phone/manifest">
 
-  <Identity Name="16475fcb-54fb-49c0-a03f-813ffd62bcb0"
-            Publisher="CN=janjoris"
+  <Identity Name="6d4f1bc1-ef0f-46e6-8406-67fe07ad39ac"
+            Publisher="CN=JanJoris"
             Version="1.0.0.0" />
 
-  <mp:PhoneIdentity PhoneProductId="16475fcb-54fb-49c0-a03f-813ffd62bcb0" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
+  <mp:PhoneIdentity PhoneProductId="6d4f1bc1-ef0f-46e6-8406-67fe07ad39ac" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
 
   <Properties>
     <DisplayName>deredactie.windows.phone.test</DisplayName>
-    <PublisherDisplayName>janjoris</PublisherDisplayName>
+    <PublisherDisplayName>JanJoris</PublisherDisplayName>
     <Logo>Assets\StoreLogo.png</Logo>
   </Properties>
 

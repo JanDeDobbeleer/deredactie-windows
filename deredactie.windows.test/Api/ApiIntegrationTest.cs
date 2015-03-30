@@ -3,10 +3,10 @@ using System.Threading.Tasks;
 using deredactie.windows.api.Service;
 using Microsoft.VisualStudio.TestPlatform.UnitTestFramework;
 
-namespace deredactie.windows.phone.test.Api
+namespace deredactie.windows.test.Api
 {
     [TestClass]
-    public class NewsServiceTest
+    public class ApiIntegrationTest
     {
         [TestMethod]
         public async Task GetContent()

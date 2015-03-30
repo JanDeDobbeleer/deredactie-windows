@@ -1,4 +1,5 @@
-﻿using Microsoft.Xaml.Interactivity;
+﻿using System;
+using Microsoft.Xaml.Interactivity;
 using Windows.UI.ViewManagement;
 using Windows.UI.Xaml;
 
@@ -52,16 +53,16 @@ namespace deredactie.windows.phone.Behaviors
         {
         }
 
-        private static void OnIsVisibleChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        private static async void OnIsVisibleChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            bool isvisible = (bool)e.NewValue;
+            var isvisible = (bool)e.NewValue;
             if (isvisible)
             {
-                StatusBar.GetForCurrentView().ProgressIndicator.ShowAsync();
+                await StatusBar.GetForCurrentView().ProgressIndicator.ShowAsync();
             }
             else
             {
-                StatusBar.GetForCurrentView().ProgressIndicator.HideAsync();
+                await StatusBar.GetForCurrentView().ProgressIndicator.HideAsync();
             }
         }
 
