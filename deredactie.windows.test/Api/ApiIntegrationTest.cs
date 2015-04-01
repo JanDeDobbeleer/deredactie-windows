@@ -12,7 +12,7 @@ namespace deredactie.windows.test.Api
         public async Task GetContent()
         {
             var service = new NewsService();
-            var response = await service.GetContentAsync();
+            var response = await service.GetFeedAsync();
             Assert.IsTrue(response.Item2.StatusCode.Equals(HttpStatusCode.OK));
         } 
     }

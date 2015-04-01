@@ -33,7 +33,7 @@ namespace deredactie.windows.api.Service
             return "http://csclient.vrt.be";
         }
 
-        public async Task<Tuple<ContentRoot, ResponseState>> GetContentAsync()
+        public async Task<Tuple<ContentRoot, ResponseState>> GetFeedAsync()
         {
             var parameters = new Dictionary<string, string>
             {
@@ -42,6 +42,41 @@ namespace deredactie.windows.api.Service
                 {"page", "0"}
             };
             return await RequestAsync<ContentRoot>("/client/mvc/apps/contents", HttpMethod.Get, parameters);
+        } 
+        
+        public async Task<Tuple<ContentRoot, ResponseState>> GetConfigAsync()
+        {
+            //TODO: find the channel to complete the endpoint for this call
+            return await RequestAsync<ContentRoot>(string.Format("/client/mvc/config/{0}", ""), HttpMethod.Get, null);
+        } 
+        
+        public async Task<Tuple<ContentRoot, ResponseState>> GetDetail(long storyId, long id)
+        {
+            return await RequestAsync<ContentRoot>(string.Format("/client/mvc/apps/detail/{0}/{1}", storyId, id), HttpMethod.Get, null);
+        }
+
+        public async Task<Tuple<ContentRoot, ResponseState>> GetDetail(string type, long id, int numberOfSiblings, string function)
+        {
+            var parameters = new Dictionary<string, string>
+            {
+                {"numberOfSiblings", numberOfSiblings.ToString()},
+                {"function", function}
+            };
+            return await RequestAsync<ContentRoot>(string.Format("/client/mvc/apps/detail/{0}/{1}", type, id), HttpMethod.Get, parameters);
+        } 
+        
+        public async Task<Tuple<ContentRoot, ResponseState>> GetDetails(List<long> ids)
+        {
+            return await RequestAsync<ContentRoot>(string.Format("/client/mvc/apps/detail/{0}", string.Join(",", ids.ToArray())), HttpMethod.Get, null);
+        } 
+        
+        public async Task<Tuple<ContentRoot, ResponseState>> GetStoryDetail(long id, int pageId)
+        {
+            var parameters = new Dictionary<string, string>
+            {
+                {"page", pageId.ToString()}
+            };
+            return await RequestAsync<ContentRoot>(string.Format("/client/mvc/apps/detail/StoryBundle/{0}", id), HttpMethod.Get, parameters);
         } 
     }
 }
