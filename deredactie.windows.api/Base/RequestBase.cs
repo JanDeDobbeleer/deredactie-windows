@@ -11,12 +11,6 @@ using Newtonsoft.Json;
 
 namespace deredactie.windows.api.Base
 {
-    public struct Parameter
-    {
-        public string Name { get; set; }
-        public object Value { get; set; }
-    }
-
     public enum HttpMethod
     {
         Get,
@@ -27,7 +21,7 @@ namespace deredactie.windows.api.Base
 
     public abstract class RequestBase
     {
-        protected async Task<Tuple<T, ResponseState>> RequestAsync<T>(string request, HttpMethod method, List<Parameter> parameters) where T : class, new()
+        protected async Task<Tuple<T, ResponseState>> RequestAsync<T>(string request, HttpMethod method, Dictionary<string, string> parameters) where T : class, new()
         {
             var client = GetDefaultHttpClient();
             HttpResponseMessage response;
@@ -78,7 +72,7 @@ namespace deredactie.windows.api.Base
             return client;
         }
 
-        private string GetQueryRequestParameters(IList<Parameter> parameters)
+        private string GetQueryRequestParameters(Dictionary<string, string> parameters)
         {
             if (parameters == null || !parameters.Any())
                 return string.Empty;
@@ -86,8 +80,8 @@ namespace deredactie.windows.api.Base
             sb.Append("?");
             for (var i = 0; i < parameters.Count; i++)
             {
-                var p = parameters[i];
-                sb.AppendFormat("{0}={1}", p.Name, p.Value);
+                var p = parameters.ElementAt(i);
+                sb.AppendFormat("{0}={1}", p.Key, p.Value);
 
                 if (i < parameters.Count - 1)
                 {
